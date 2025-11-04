@@ -16,6 +16,7 @@
         label="Rechercher un agent"
         solo-inverted
       />
+
       <v-btn
         icon
         title="Réinitialiser le filtre"
@@ -23,6 +24,7 @@
       >
         <v-icon>mdi-close-circle</v-icon>
       </v-btn>
+
       <!-- Filtre par rôle -->
       <v-select
         v-model="selectedRole"
@@ -56,11 +58,12 @@
               cover
               :src="agent.background"
             />
+
             <div class="agent-overlay">
               <v-img
                 contain
                 height="120"
-                :src="agent.displayIcon"
+                :src="agent.displayIcon || agent.fullPortrait"
               />
               <h3>{{ agent.displayName }}</h3>
               <p class="role">{{ agent.role?.displayName }}</p>
@@ -72,8 +75,12 @@
       <!-- Dialogue des détails -->
       <v-dialog v-model="showDialog" max-width="800">
         <v-card v-if="selectedAgent">
-          <v-card-title class="headline">{{ selectedAgent.displayName }}</v-card-title>
-          <v-card-subtitle>{{ selectedAgent.role?.displayName }}</v-card-subtitle>
+          <v-card-title class="headline">
+            {{ selectedAgent.displayName }}
+          </v-card-title>
+          <v-card-subtitle>
+            {{ selectedAgent.role?.displayName }}
+          </v-card-subtitle>
 
           <v-card-text>
             <v-img
@@ -82,6 +89,7 @@
               height="300"
               :src="selectedAgent.fullPortrait"
             />
+
             <p>{{ selectedAgent.description }}</p>
 
             <h4 class="mt-4">Abilities</h4>
@@ -140,7 +148,7 @@
 
   // Liste des rôles disponibles pour filtrer
   const roles = computed(() => {
-    const uniqueRoles = store.books
+    const uniqueRoles = (store.books || [])
       .map(a => a.role?.displayName)
       .filter(Boolean)
     return [...new Set(uniqueRoles)]
@@ -148,10 +156,11 @@
 
   // Agents filtrés dynamiquement
   const filteredAgents = computed(() => {
-    return store.books.filter(agent => {
-      const matchName = agent.displayName
-        .toLowerCase()
-        .includes(searchQuery.value.toLowerCase())
+    const books = store.books || []
+    return books.filter(agent => {
+      const name = (agent.displayName || '').toLowerCase()
+      const q = (searchQuery.value || '').toLowerCase()
+      const matchName = name.includes(q)
       const matchRole = selectedRole.value
         ? agent.role?.displayName === selectedRole.value
         : true
