@@ -1,36 +1,30 @@
-// Utilities
 import { defineStore } from 'pinia'
-import api from '@/plugins/axios'
+import axios from 'axios'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    //
-    isLoading: false,
-    error: null,
-    books: [],
-    pokemons: [],
+    agents: [],
+    favorites: [] // <--- AJOUT
   }),
 
-  getters: {
-    hasBooks: state => state.books.length > 0,
-    totalBooks: state => state.books.length,
-  },
-
   actions: {
-    async fetchBooks () {
-      try {
-        this.isLoading = true
-        const response = await api.get('agents')
-        this.books = response.data.data
-        console.log('Livres chargés :', this.books)
-      } catch (error) {
-        this.error = 'Erreur lors du chargement des livres :' + error.message
-        return error
+    async init() {
+      if (this.agents.length > 0) return
+      const res = await axios.get('https://valorant-api.com/v1/agents?isPlayableCharacter=true')
+      this.agents = res.data.data
+    },
+
+    toggleFavorite(agent) {
+      const index = this.favorites.findIndex(a => a.uuid === agent.uuid)
+      if (index === -1) {
+        this.favorites.push(agent)
+      } else {
+        this.favorites.splice(index, 1)
       }
     },
 
-    async init () {
-      await this.fetchBooks()
-    },
-  },
+    isFavorite(agent) {
+      return this.favorites.some(a => a.uuid === agent.uuid)
+    }
+  }
 })

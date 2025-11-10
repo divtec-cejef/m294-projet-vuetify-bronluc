@@ -4,21 +4,18 @@
 ## 1. 🎨 Présentation du projet
 
 ### Concept
-- API choisie et pourquoi  
-- Public cible  
-- Objectifs de l’application  
+- J'ai chosi l'API de valorant parce que j'ai déjà joué au jeu et qu'elle est complète
+- Afficher les agents du jeu avec quelques fonctionnalités
 
 ### Fonctionnalités principales
-- Affichage d’une liste d’éléments (via API)
+- Affichage des agents (via API)
 - Recherche / Tri / Filtres
-- Vue détail
 - Fonctionnalité interactive (favoris, watchlist, paramètres…)
 - Persistance locale (favoris ou préférences)
 
 ### Aperçu visuel
 _(Capture d’écran de l’application)_  
-`![Screenshot de l’application](img/screenshot.png)`
-
+![img.png](img.png)
 ---
 
 ## 2. 📚 Parcours d'apprentissage
@@ -29,7 +26,7 @@ _(Capture d’écran de l’application)_
 - [Vuetify Docs](https://vuetifyjs.com/en/components/all/)
 - [Pinia Docs](https://pinia.vuejs.org/)
 - [Public APIs List](https://github.com/public-apis/public-apis)
-- Autres ressources...
+- Chat gpt
 
 #### Progression
 - Semaine 1 : ...
@@ -64,15 +61,14 @@ _(Capture d’écran de l’application)_
 
 ### Choix techniques
 - API sélectionnée :  
-- Justification du choix :  
+- Justification du choix : API complète 
 - Endpoints utilisés :  
-- Limites/quotas connus :  
+- Limites/quotas connus : 
 
 ### Architecture (Descriptif + schéma simple + data-flow)
-- `App.vue` : layout principal  
+- `App.vue` : layout principal 
 - `views/` : pages (liste, détail, favoris)  
 - ...
-Outils utiles : Figma / Draw.io / ...
 
 **Data-flow résumé :**  
 - Vue déclenche un **event utilisateur** → composant appelle une fonction du **store** → ...
@@ -113,20 +109,20 @@ Outils utiles : Figma / Draw.io / ...
 **⚠️ TRANSPARENCE OBLIGATOIRE** : Si vous utilisez une IA, vous DEVEZ :
 
 ### IA utilisée
-- **Nom** : ChatGPT / Claude / GitHub Copilot / Autre  
-- **Version** : _(ex. GPT-4)_  
-- **Contexte** : Aide ponctuelle / Génération de code / Debugging  
+- **Nom** : ChatGPT 
+- **Version** : GPT-5 
+- **Contexte** : Génération de code / Debugging / Explication de lignes de codes
 
 ### Utilisation détaillée
 **Domaines d'aide :**
 - Aide au code général : X%
 - Génération de snippets Vue/Vuetify : X%  
-- Aide à la structuration du projet : X%
-- Debugging : X%  
-- Recherche d’idées : X%  
+- Aide à la structuration du projet : 75%
+- Debugging : 50%  
+- Recherche d’idées : 0%  
 
 **Compréhension et adaptation**
-- Expliquer ce que fait le code généré  
+- Expliquer ce que fait le code généré 
 - Dire comment il a été adapté au projet  
 
 ### Parties codées manuellement

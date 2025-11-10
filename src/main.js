@@ -1,43 +1,14 @@
-/**
- * main.js
- *
- * Bootstraps Vuetify and other plugins then mounts the App`
- */
-
-import axios from 'axios'
-
+import { createPinia } from 'pinia'
+// src/main.js
 import { createApp } from 'vue'
-
-// Plugins
-import { registerPlugins } from '@/plugins'
-
-// Components
 import App from './App.vue'
-
-// Composables
-
-// Styles
-import 'unfonts.css'
+import vuetify from './plugins/vuetify' // ✅ ton fichier que tu viens de montrer
+import { router } from './router'
 
 const app = createApp(App)
 
-registerPlugins(app)
+app.use(createPinia())
+app.use(router)
+app.use(vuetify)
 
 app.mount('#app')
-
-// main.js
-
-// Même exemple avec Axios (plus simple)
-
-async function chargerLivres () {
-  try {
-    // Requête GET avec Axios
-    const response = await axios.get('http://localhost:3000')
-    // On affiche le résultat dans la console
-    console.log('Livres chargés :', response.data)
-  } catch (error) {
-    // En cas d’erreur, on affiche le message d’erreur
-    console.error('Erreur lors de la récupération des livres:', error)
-  }
-}
-chargerLivres()
