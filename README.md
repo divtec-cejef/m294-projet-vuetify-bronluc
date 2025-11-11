@@ -9,14 +9,12 @@
 
 ### Fonctionnalités principales
 - Affichage des agents (via API)
-- Recherche / Tri / Filtres
-- Fonctionnalité interactive (favoris, watchlist, paramètres…)
-- Persistance locale (favoris ou préférences)
+- Recherche / Tri / Filtres / Favoris
+- Fonctionnalité interactive (favoris, détails agents)
 
 ### Aperçu visuel
-_(Capture d’écran de l’application)_  
 ![img.png](img.png)
----
+
 
 ## 2. 📚 Parcours d'apprentissage
 
@@ -26,87 +24,72 @@ _(Capture d’écran de l’application)_
 - [Vuetify Docs](https://vuetifyjs.com/en/components/all/)
 - [Pinia Docs](https://pinia.vuejs.org/)
 - [Public APIs List](https://github.com/public-apis/public-apis)
-- Chat gpt
+- [Chat gpt](https://chatgpt.com)
 
 #### Progression
-- Semaine 1 : ...
-- Semaine 2 : ...
-- Semaine 3 : ...
-- Semaine 4 : ...
-- ...
+- Semaine 1 : Recherche d'une bonne API + test
+- Semaine 2 : Création du projet, ajout des composants
+- Semaine 3 : ajout du tri / filtres + détails des agents
+- Semaine 4 : ajout de la page favoris
 
 ---
 
 ## 3. 🛠️ Outils et méthodologie
 
 ### Environnement de développement
-- **IDE** : VS Code / WebStorm / Autre
+- **IDE** : WebStorm
 - **Versioning** : Git + GitHub
 - **Dépendances principales** : Vue 3, Vuetify 3, Pinia, Axios/Fetch
-- **Gestion API Keys** : `.env` + `.env.example`
+- **Gestion API Keys** : `.env`
 
 ### Installation & Run
-- Cloner le repo :...
-- Installer :... 
-- Lancer :...
-- Variables d’environnement : copier `.env.example` → `.env` et compléter les clés nécessaires  
+- Cloner le repo : git clone https://github.com/divtec-cejef/m294-projet-vuetify-bronluc
+- Installer : npm install
+- Lancer : npm start
 
 ### Méthodologie
 - Découpage en composants réutilisables
 - Props & Emits clairs
 - Store global avec Pinia
 - Commits réguliers et explicites
-- Tests manuels (UI, persistance, erreurs API)
-- ...
 
 ### Choix techniques
-- API sélectionnée :  
+- API sélectionnée :  https://valorant-api.com/v1
 - Justification du choix : API complète 
-- Endpoints utilisés :  
+- Endpoints utilisés :  https://valorant-api.com/v1/agents
 - Limites/quotas connus : 
 
 ### Architecture (Descriptif + schéma simple + data-flow)
 - `App.vue` : layout principal 
-- `views/` : pages (liste, détail, favoris)  
-- ...
+- `pages/` : pages (Index, Favoris, AgentDetail)  
+- `router/` : routeur (index.js)
 
-**Data-flow résumé :**  
-- Vue déclenche un **event utilisateur** → composant appelle une fonction du **store** → ...
-
----
 
 ## 4. 🧪 Tests et validation
 
 ### Tests techniques
 - ✅ Appels API fonctionnels  
 - ✅ Persistance vérifiée après refresh (localStorage)  
-- ✅ Navigation entre les vues OK  
-- ...
+- ✅ Navigation entre les vues OK
+- ✅ Recherche et filtrage
+- ✅ Ajout de favoris
 
 ### Tests d’UX
 - Navigation intuitive  
 - Recherche/filtre/tri faciles à comprendre  
-- Feedback utilisateur (loading, erreurs, vide)  
-- ...
+- Feedback utilisateur (erreurs, vide)
 
 ### Tests d’accessibilité
 - Contraste couleurs (Vuetify par défaut)  
 - Labels et placeholders corrects  
-- Navigation clavier possible  
-- Focus visible  
-- ...
+- Navigation clavier possible
 
 ### Tests d’erreurs & fallback
-- API down → **mock fallback** affiché (fichier local ou données simulées)  
 - Liste vide → message clair affiché  
-- Recherche sans résultat → affichage “Aucun élément trouvé”  
-- ...
 
 ---
 
 ## 5. 🤖 Usage d’intelligence artificielle
-
-**⚠️ TRANSPARENCE OBLIGATOIRE** : Si vous utilisez une IA, vous DEVEZ :
 
 ### IA utilisée
 - **Nom** : ChatGPT 
@@ -115,26 +98,21 @@ _(Capture d’écran de l’application)_
 
 ### Utilisation détaillée
 **Domaines d'aide :**
-- Aide au code général : X%
-- Génération de snippets Vue/Vuetify : X%  
+- Aide au code général : 50%
+- Génération de snippets Vue/Vuetify : 50%  
 - Aide à la structuration du projet : 75%
-- Debugging : 50%  
-- Recherche d’idées : 0%  
-
-**Compréhension et adaptation**
-- Expliquer ce que fait le code généré 
-- Dire comment il a été adapté au projet  
+- Debugging : 30%  
+- Recherche d’idées : 0%
 
 ### Parties codées manuellement
-- Composants principaux : X% personnel  
-- Store & persistance : X% personnel  
-- Routing & navigation : X% personnel  
+- Composants principaux : 50% personnel  
+- Store & persistance : 50% personnel  
+- Routing & navigation : 50% personnel  
 - Tests & validation : 100% personnel  
 
 ### Apprentissage personnel
-- Ce que j’ai appris grâce à l’IA  
-- Comment elle m’a aidé à progresser  
-
+- Ce que j’ai appris grâce à l’IA : J’ai appris à structurer une application Vue.js avec un routeur, un store Pinia et plusieurs pages
+- L’IA m’a aidé à corriger mes erreurs, comprendre le fonctionnement du store et améliorer l’organisation de mon code, ce qui m’a permis d’être plus autonome et efficace.
 ---
 
 ## 6. 🎯 Bilan personnel
@@ -145,24 +123,16 @@ _(Capture d’écran de l’application)_
 - Concepts difficiles maîtrisés  
 
 ### Difficultés rencontrées
-- Problèmes techniques et solutions trouvées  
-- Moments de blocage et dépassement  
-- Aide reçue et sources  
+- Problèmes techniques et solutions trouvées  : routeur, composants
+- Aide reçue et sources  : Chat gpt, Mr Tirole
 
 ### Réussites et fiertés
-- Aspects du projet dont je suis fier  
-- Progrès constatés depuis le début  
-- Envies de développement futur  
+- Content du rendu final
 
 ### Améliorations possibles
-- Ce que j’ajouterais avec plus de temps  
-- Fonctionnalités bonus envisagées  
-- Compétences à approfondir  
-
----
+- Ce que j’ajouterais avec plus de temps  :  ajout d'une page avec les armes du jeu 
+- Fonctionnalités bonus envisagées  : plus de couleur(dégradé de couleur pour chaque agents)
 
 ## 7. 📚 Références & Sources
-- Documentation de l’API : [Nom de l’API](https://...)  
-- Tutos clés utilisés : ...  
+- Documentation de l’API : [Valorant-API](https://dash.valorant-api.com)  
 - Usage de l’IA : voir section ci-dessus  
-- Autres ressources utiles : ...

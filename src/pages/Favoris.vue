@@ -32,6 +32,9 @@
   import { useRouter } from 'vue-router'
   import { useAppStore } from '@/stores/app'
 
+  const favoriteAgents = computed(() =>
+    store.agents.filter(a => store.favorites.includes(a.uuid)),
+  )
   const store = useAppStore()
   const router = useRouter()
 

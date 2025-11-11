@@ -1,20 +1,22 @@
-import { defineStore } from 'pinia'
 import axios from 'axios'
+import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
     agents: [],
-    favorites: [] // <--- AJOUT
+    favorites: [], // <--- AJOUT
   }),
 
   actions: {
-    async init() {
-      if (this.agents.length > 0) return
+    async init () {
+      if (this.agents.length > 0) {
+        return
+      }
       const res = await axios.get('https://valorant-api.com/v1/agents?isPlayableCharacter=true')
       this.agents = res.data.data
     },
 
-    toggleFavorite(agent) {
+    toggleFavorite (agent) {
       const index = this.favorites.findIndex(a => a.uuid === agent.uuid)
       if (index === -1) {
         this.favorites.push(agent)
@@ -23,8 +25,8 @@ export const useAppStore = defineStore('app', {
       }
     },
 
-    isFavorite(agent) {
+    isFavorite (agent) {
       return this.favorites.some(a => a.uuid === agent.uuid)
-    }
-  }
+    },
+  },
 })
