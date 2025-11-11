@@ -35,26 +35,29 @@
       >
         <v-card
           class="ma-3 agent-card"
+          dynamique
           height="400"
-          style="cursor: pointer; position: relative;"
-          @click="goToAgent(agent)"
+          navigation
+          :to="`/agents/${agent.uuid}`"
         >
+          >
           <v-img class="agent-bg" cover :src="agent.background" />
+
           <div class="agent-overlay">
             <v-img contain height="120" :src="agent.displayIcon" />
             <h3>{{ agent.displayName }}</h3>
             <p class="role">{{ agent.role?.displayName }}</p>
-          </div>
 
-          <!-- Bouton favori -->
-          <v-btn
-            class="favorite-btn"
-            :color="store.isFavorite(agent) ? 'red' : 'grey'"
-            icon
-            @click.stop="store.toggleFavorite(agent)"
-          >
-            <v-icon>{{ store.isFavorite(agent) ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
-          </v-btn>
+            <!-- Bouton favori -->
+            <v-btn
+              class="favorite-btn"
+              :color="store.isFavorite(agent) ? 'red' : 'grey'"
+              icon
+              @click.stop.prevent="store.toggleFavorite(agent)"
+            >
+              <v-icon>{{ store.isFavorite(agent) ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
+            </v-btn>
+          </div>
         </v-card>
 
       </v-col>
@@ -151,4 +154,7 @@
    background-color: rgba(0, 0, 0, 0.5);
  }
 
+.favorite-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 </style>

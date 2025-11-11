@@ -1,14 +1,11 @@
 import { createPinia } from 'pinia'
-// src/main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify' // ✅ ton fichier que tu viens de montrer
-import { router } from './router'
+import vuetify from './plugins/vuetify'
+import router from './router'
 
 const app = createApp(App)
-
-app.use(createPinia())
 app.use(router)
+app.use(createPinia())
 app.use(vuetify)
-
 app.mount('#app')

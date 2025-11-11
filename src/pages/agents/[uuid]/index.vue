@@ -6,7 +6,7 @@
           class="rounded-xl"
           contain
           height="400"
-          :src="agent.fullPortrait"
+          :src="agent.fullPortrait || agent.displayIcon"
         />
       </v-col>
 
@@ -38,11 +38,7 @@
       </v-col>
     </v-row>
 
-    <v-btn
-      class="mt-6"
-      color="primary"
-      @click="$router.push('/')"
-    >
+    <v-btn class="mt-6" color="primary" @click="$router.push('/')">
       ← Retour à la liste
     </v-btn>
   </v-container>
@@ -53,20 +49,20 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
   import { useAppStore } from '@/stores/app'
 
   const route = useRoute()
   const store = useAppStore()
 
+  onMounted(() => {
+    if (store.agents.length === 0) {
+      store.init()
+    }
+  })
+
   const agent = computed(() => {
     return store.agents.find(a => a.uuid === route.params.uuid)
   })
 </script>
-
-<style scoped>
-h1 {
-  font-weight: bold;
-}
-</style>

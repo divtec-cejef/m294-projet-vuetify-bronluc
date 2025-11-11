@@ -63,6 +63,8 @@
 - `App.vue` : layout principal 
 - `pages/` : pages (Index, Favoris, AgentDetail)  
 - `router/` : routeur (index.js)
+- `stores/` : store (app.js)
+
 
 
 ## 4. 🧪 Tests et validation

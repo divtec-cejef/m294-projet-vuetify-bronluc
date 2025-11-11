@@ -2,7 +2,7 @@
   <v-container class="mt-6">
     <h1>Mes agents favoris</h1>
 
-    <v-row v-if="store.favorites.length > 0">
+    <v-row v-if="favoriteAgents.length > 0">
       <v-col
         v-for="agent in store.favorites"
         :key="agent.uuid"
@@ -21,10 +21,12 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <v-alert v-else text type="info">
-      Aucun favori pour le moment ❤️
-    </v-alert>
+    <v-row v-else>
+      <v-col class="text-center text-grey" cols="12">
+        <v-icon size="80">mdi-heart-outline</v-icon>
+        <p>Aucun agent favori pour le moment</p>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -32,9 +34,7 @@
   import { useRouter } from 'vue-router'
   import { useAppStore } from '@/stores/app'
 
-  const favoriteAgents = computed(() =>
-    store.agents.filter(a => store.favorites.includes(a.uuid)),
-  )
+  const favoriteAgents = computed(() => store.favorites)
   const store = useAppStore()
   const router = useRouter()
 
